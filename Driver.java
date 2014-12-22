@@ -1,3 +1,7 @@
 public class Driver {
-    //code
+    public static void main(String[] args) {
+	Browser test = new Browser();
+
+	System.out.println(test.ReadFile());
+    }
 }
