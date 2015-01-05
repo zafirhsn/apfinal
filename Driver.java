@@ -3,5 +3,6 @@ public class Driver {
 	Browser test = new Browser();
 
 	System.out.println(test.ReadFile());
+	System.out.println(test.search());
     }
 }

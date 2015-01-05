@@ -2,7 +2,8 @@ import java.util.*;
 import java.io.*;
 
 public class Browser {
-    private ArrayList<String> wordlist = new ArrayList<String>();
+    private static ArrayList<String> wordlist = new ArrayList<String>();
+    private static ArrayList<String> tags = new ArrayList<String>();
     
     public static ArrayList<String> ReadFile() {
 	Scanner sc = null;
@@ -18,7 +19,12 @@ public class Browser {
 	return wordlist;
     }
 
-    public void search() {
-	//code
+    public static boolean search() {
+	for (int i=0;i<wordlist.size();i++) {
+	    if (wordlist.get(i).substring(0,1).equals("<")) {
+	        return true;
+	    }
+	}
+	return false;
     }
 }
