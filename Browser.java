@@ -4,6 +4,7 @@ import java.io.*;
 public class Browser {
     private static ArrayList<String> wordlist = new ArrayList<String>();
     private static ArrayList<String> tags = new ArrayList<String>();
+    private static Gui basicGui = new Gui();
     
     public static ArrayList<String> ReadFile() {
 	Scanner sc = null;
@@ -24,23 +25,25 @@ public class Browser {
 	    if (wordlist.get(i).substring(0,1).equals("<")) {
 
 		if (wordlist.get(i).equals("<html>")) {
-		    // call html function
+		    html();
 		}
 		if (wordlist.get(i).equals("<title>")) {
-		    // call title function
+		    title();
 		}
 		if (wordlist.get(i).equals("<header>")) {
-		    // call header function
+		    header();
 		}
 		if (wordlist.get(i).equals("<body>")) {
-		    // call body function
+		    body();
 		}
 		if (wordlist.get(i).equals("<b>")) {
-		    // call bod function
+		    bold();
 		}
 		if (wordlist.get(i).equals("<i>")) {
+		    italics();
 		}
 		if (wordlist.get(i).equals("<u>")) {
+		    underline();
 		}
 	    }
 	    
@@ -49,8 +52,12 @@ public class Browser {
     }
 
     public void html() {
-	// gui stuff
+	//html code goes here
     }
+
+    public void title() {
+	basicGui.setTitle(
+	
 }
  
 
