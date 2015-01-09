@@ -20,6 +20,7 @@ public class Browser {
     }
 
     public static boolean search() {
+	String Title = "";
 	for (int i=0;i<wordlist.size();i++) {
 	    if (wordlist.get(i).substring(0,1).equals("<")) {
 
@@ -27,7 +28,9 @@ public class Browser {
 		    // call html function
 		}
 		if (wordlist.get(i).equals("<title>")) {
-		    // call title function
+		    for(int h = wordlist.indexOf("<title>"); h < wordlist.indexOf("</title>"); h++){
+			Title = Title + wordlist.get(h);
+		    }
 		}
 		if (wordlist.get(i).equals("<header>")) {
 		    // call header function
