@@ -36,7 +36,7 @@ public class Browser {
 		    // call body function
 		}
 		if (wordlist.get(i).equals("<b>")) {
-		    // call bod function
+		    // call bold function
 		}
 		if (wordlist.get(i).equals("<i>")) {
 		}

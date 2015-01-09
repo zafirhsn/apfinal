@@ -25,7 +25,7 @@ text.setText(s);
 }
 }
  public Gui(){
-	setTitle("Browser");
+	setTitle("Other Browser");
 	//When available change to
 	//setTitle(Browser.getTitle())
 	setSize(800,800);
@@ -36,10 +36,10 @@ text.setText(s);
 	pane.setLayout(new FlowLayout());
 	JTextField myOutput = new JTextField(45);
 	myOutput.setText("URL");
-	pane.add(myOutput);
-	go = new JButton("Go!");
-	go.addActionListener(this);
-	pane.add(go);
+       	pane.add(myOutput);
+	//	go = new JButton("Go!");
+	//	go.addActionListener(this);
+	//	pane.add(go);
 	//text!
 	/*	JTextArea navigation =new JTextArea();
 		       	text.setColumns(20);
