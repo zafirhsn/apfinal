@@ -18,9 +18,15 @@ public class Browser {
 	}
 	return wordlist;
     }
-
-    public static boolean search() {
-	String Title = "";
+  
+    Title = "Default";
+    public void setTitle(String Title){
+	String Title = this Title
+    }
+    public String getTitle(){
+	return Title;
+    } 
+    public static void search() {
 	for (int i=0;i<wordlist.size();i++) {
 	    if (wordlist.get(i).substring(0,1).equals("<")) {
 
@@ -48,7 +54,6 @@ public class Browser {
 	    }
 	    
 	}
-	return false;
     }
 
     public void html() {
