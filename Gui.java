@@ -6,25 +6,25 @@ import java.awt.event.*;
 public class Gui extends JFrame {
     private JButton refresh,go;
     private Container pane;
-    private JLabel title;
+    private JLabel text1;
     private JPanel canvas;
-    private JTextArea text;
+    private JTextArea text2;
     int[] styles = { Font.PLAIN, Font.ITALIC, Font.BOLD, Font.ITALIC + Font.BOLD };
     String[] stylenames = { "Plain", "Italic", "Bold", "Bold & Italic" };
     // Key base code 
-  private class Key implements KeyListener {
-public void keyPressed(KeyEvent e) {}
-public void keyReleased(KeyEvent e) {}
-public void keyTyped(KeyEvent e) {
-    /*if (box.isSelected()){
-String s = text.getText();
-s = s.toUpperCase();
-text.setText(s);
-}
-    */
-}
-}
- public Gui(){
+    private class Key implements KeyListener {
+	public void keyPressed(KeyEvent e) {}
+	public void keyReleased(KeyEvent e) {}
+	public void keyTyped(KeyEvent e) {
+	    /*if (box.isSelected()){
+	      String s = text.getText();
+	      s = s.toUpperCase();
+	      text.setText(s);
+	      }
+	    */
+	}
+    }
+    public Gui(){
 	setTitle("Other Browser");
 	//When available change to
 	//setTitle(Browser.getTitle())
@@ -32,7 +32,7 @@ text.setText(s);
 	setLocation(100,100);
 	setDefaultCloseOperation(EXIT_ON_CLOSE);
 	pane = getContentPane();
-				//pane.setLayout(new GridLayout(3,3));
+	//pane.setLayout(new GridLayout(3,3));
 	pane.setLayout(new FlowLayout());
 	JTextField myOutput = new JTextField(45);
 	myOutput.setText("URL");
@@ -42,24 +42,28 @@ text.setText(s);
 	//	pane.add(go);
 	//text!
 	/*	JTextArea navigation =new JTextArea();
-		       	text.setColumns(20);
-	       		text.setRows(1);
-       			text.setBorder(BorderFactory.createLineBorder(Color.red,2));
-			text.addKeyListener(new Key());
-			pane.add(text);
+		text.setColumns(20);
+		text.setRows(1);
+		text.setBorder(BorderFactory.createLineBorder(Color.red,2));
+		text.addKeyListener(new Key());
+		pane.add(text);
 	*/
-JTextArea textArea = new JTextArea(
-    "This is an editable JTextArea. " +
-    "A text area is a \"plain\" text component, " +
-    "which means that although it can display text " +
-    "in any font, all of the text is in the same font."
-);
-textArea.setFont(new Font("Serif", Font.ITALIC, 16));
-textArea.setLineWrap(true);
-textArea.setWrapStyleWord(true);
+	/*JTextArea textArea = new JTextArea(
+	  "This is an editable JTextArea. " +
+	  "A text area is a \"plain\" text component, " +
+	  "which means that although it can display text " +
+	  "in any font, all of the text is in the same font."
+	  );
+      
+	  textArea.setFont(new Font("Serif", Font.ITALIC, 16));
+	  textArea.setLineWrap(true);
+	  textArea.setWrapStyleWord(true);
+	*/
+       
+	JLabel text1 = new JLabel("some text");
+	pane.add(text1);
 
-
-			}
+    }
     public static void main(String[] args) {
 	Gui x = new Gui();
 	x.setVisible(true);
