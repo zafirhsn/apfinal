@@ -10,10 +10,10 @@ void setup() {
   bg = loadImage("wood.png");
   fg = loadImage("checkers.jpg");
   image(bg,0,0);
-  tint(255,80);
+  tint(255,150);
   image(fg, (width-650)/2,(height-650)/2, 650, 650);
   
-  fill(200,0,0,200);
+  fill(0,0,0);
   textSize(100);
   text("CHECKERS", (width-150)/4, height/4);
   
@@ -25,8 +25,31 @@ void setup() {
   text("START", (width-100)/2, height/2);
   
   textAlign(LEFT,CENTER);
-  text("HELP", (width+150)/2, height/2);
-  
+  text("HELP", (width+150)/2, height/2); 
 
 }
 
+void clickStart() {
+  
+ //"START" button 
+ if ((mouseX >= (width-100)/2 && mouseX <= (width-100)/2)) {  //&& (mouseY >= (height/2) && mouseY <=
+   textSize(60);
+   textAlign(RIGHT,CENTER);
+   text("START", (width-100)/2, height/2); 
+ }
+ 
+}
+
+void draw() {
+  clickStart();
+}
+
+/* 
+void clickHelp() {
+  //"HELP" button
+  if (
+  
+}
+
+void setupBoard() {
+  */
