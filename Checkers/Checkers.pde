@@ -1,6 +1,10 @@
 private PImage bg;
 private PImage fg;
 private PImage backarrow;
+
+private PImage b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12;
+private PImage r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,r11,r12;
+
 private PFont font;
 
 private int startboxX = 185;
@@ -20,6 +24,7 @@ void setup() {
   createBackground();
 
   //Creates title
+  fill(255);
   createTitle();
 
   //Creates start and help buttons
@@ -28,6 +33,8 @@ void setup() {
   createHelp();
 }
 
+//=============================================
+//These functions create everything needed in the Menu screen
 void createBackground() {
   bg = loadImage("wood.png");
   fg = loadImage("checkers.jpg");
@@ -40,7 +47,8 @@ void createTitle() {
    rect((width-530)/2, (height-580)/2, 550, 100, 6, 6, 6, 6);
    fill(0);
    textSize(100);
-   text("CHECKERS", (width-150)/4, height/4);
+   textAlign(CENTER, CENTER);
+   text("CHECKERS", (width+10)/2, (height-500)/2);
 }
 
 void createStart() {
@@ -57,12 +65,17 @@ void createHelp() {
   textAlign(LEFT, CENTER);
   text("HELP", (width+150)/2, height/2);
 }
+//====================================================
 
+
+//=======BACK ARROW=========
 void createBack() {
   ellipse(30, 30, 50, 50);
   backarrow = loadImage("backarrow.png");
   image(backarrow, 5, 5, 50, 50);
 }
+//==========================
+
 
 void hoverMenuScreen() {
   if (overStart()) {
@@ -105,8 +118,12 @@ void draw() {
     hoverBack();
     clickBack();
  }
+ setupPieces();
 }
 
+
+//============================================================
+//These functions check to see if the mouse if hovering over any buttons
 boolean overStart() {
   if ((mouseX >= startboxX && mouseX <= (startboxX + 170)) && (mouseY >= startboxY && mouseY <= (startboxY + 70))) {
     return true;
@@ -127,7 +144,13 @@ boolean overBack() {
   }
   return false;
 }
+//================================================================
 
+
+
+
+//================================================================
+//These functions check to see if the mouse clicked a button
 void clickStart() {
   if ((mousePressed && (mouseButton == LEFT)) && overStart()) {
     menuScreen = false;
@@ -160,16 +183,23 @@ void clickBack() {
       menuScreen = true;
       boardScreen = false;
       helpScreen = false;
+      image(bg, 0, 0);
+      image(bg, 0, 0);
+      image(bg, 0, 0);
       setup();
     }
     if (boardScreen == true) {
       menuScreen = true;
       boardScreen = false;
       helpScreen = false;
+      image(bg, 0, 0);
+      image(bg, 0, 0);
+      image(bg, 0, 0);
       setup();
     }
   }
 }
+//============================================================
      
       
 
@@ -191,16 +221,16 @@ void Rules() {
   
   //Rule 2
   text("2. The board consists of 64 squares, alternating between 32 dark and 32 light squares. It is positioned so that ", 80, y+40);
-  text("each player has a light square on the right side corner closest to him or her.", 80, y+55);
+  text("each player has a dark square on the right side corner closest to him or her.", 80, y+55);
   
   //Rule 3
-  text("3. Each player places his or her pieces on the 12 dark squares closest to him or her.", 80, y+80);
+  text("3. Each player places his or her pieces on the 12 light squares closest to him or her.", 80, y+80);
   
   //Rule 4
   text("4. Black moves first. Players then alternate moves.", 80, y+105);
   
   //Rule 5
-  text("5. Moves are allowed only on the dark squares, so pieces always move diagonally. Single pieces are always limited ", 80, y+130);
+  text("5. Moves are allowed only on the light squares, so pieces always move diagonally. Single pieces are always limited ", 80, y+130);
   text("to forward moves (toward the opponent).", 80, y+145);
   
   //Rule 6
@@ -236,8 +266,39 @@ void Rules() {
  text("opponent's pieces have been captured, but it could also be because all of his pieces are blocked in.", 80, y+465);
  
  text("All rules were taken from http://boardgames.about.com/cs/checkersdraughts/ht/play_checkers.htm", 80, 650);
+ text("Some minor rule changes for convenience", 80, 665);
 }
 
+void GamePlay() {
+  
+}
+
+
+void setupPieces() {
+    b1 = b2 = b3 = b4 = b5 = b6 = b7= b8 = b9 = b10 = b11 = b12 = loadImage("blackchecker.png");
+    r1 = r2 = r3 = r4 = r5 = r6 = r7 = r8 = r9 = r10 = r11 = r12 = loadImage("redchecker.png");
+    
+    /*
+    loadPixels();
+    int a = 60075;
+    int z = 60075;
+    for (int i=0;i<650;i++) {
+      for (int h=0;h<650;h++){ 
+        if (pixels[z] > color(150)) {
+          pixels[z] = color(255);
+            
+        }
+        else {
+          pixels[z] = color(0);
+        }
+        z++;
+      }
+      a += 800;
+      z = a;
+    }
+   updatePixels(); 
+   */
+}
 
 
 
