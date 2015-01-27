@@ -1,5 +1,6 @@
 private PImage bg;
 private PImage fg;
+private PImage backarrow;
 private PFont font;
 
 private int startboxX = 185;
@@ -32,7 +33,7 @@ void createBackground() {
   fg = loadImage("checkers.jpg");
   image(bg, 0, 0);
   tint(255, 150);
-  image(fg, (width-650)/2, (height-600)/2, 650, 650);
+  image(fg, (width-650)/2, (height-650)/2, 650, 650);
 }
 
 void createTitle() {
@@ -57,7 +58,13 @@ void createHelp() {
   text("HELP", (width+150)/2, height/2);
 }
 
-void checkHover() {
+void createBack() {
+  ellipse(30, 30, 50, 50);
+  backarrow = loadImage("backarrow.png");
+  image(backarrow, 5, 5, 50, 50);
+}
+
+void hoverMenuScreen() {
   if (overStart()) {
     fill(0,200,0,50);
     createStart(); 
@@ -76,15 +83,28 @@ void checkHover() {
   }
 }
 
+void hoverBack() {
+  if (overBack()) {
+     fill(180,0,0); 
+     createBack();
+  }
+ else {
+    fill(255);
+    createBack();
+ }
+} 
+
 void draw() {
   //Start and help buttons are redrawn a different shade when mouse hovers over
   if (menuScreen) {
-    checkHover();
+    hoverMenuScreen();
+    clickStart();
+    clickHelp();
   }
-  
-  clickStart();
-  clickHelp();
-  
+ if (helpScreen || boardScreen) {
+    hoverBack();
+    clickBack();
+ }
 }
 
 boolean overStart() {
@@ -101,13 +121,23 @@ boolean overHelp() {
   return false;
 }
 
+boolean overBack() {
+  if ((mouseX >= 5 && mouseX <= 55) && (mouseY >= 5 && mouseY <= 55)) {
+    return true;
+  }
+  return false;
+}
+
 void clickStart() {
   if ((mousePressed && (mouseButton == LEFT)) && overStart()) {
     menuScreen = false;
     boardScreen = true;
     helpScreen = false;
     image(bg, 0, 0);
-    image(fg, (width-650)/2, (height-600)/2, 650, 650);
+    image(bg, 0, 0);
+    image(bg, 0, 0);
+    image(fg, (width-650)/2, (height-650)/2, 650, 650);
+    image(fg, (width-650)/2, (height-650)/2, 650, 650);
   }
 }
 
@@ -117,20 +147,44 @@ void clickHelp() {
     boardScreen = false;
     helpScreen = true;
     image(bg, 0, 0);
+    createBack();
     fill(255);
     rect (50, 50, 700, 700, 6, 6, 6, 6);
-    Rules();
-    
+    Rules();   
   }
 }
 
+void clickBack() {
+  if ((mousePressed && (mouseButton == LEFT)) && overBack()) {
+    if (helpScreen == true) { 
+      menuScreen = true;
+      boardScreen = false;
+      helpScreen = false;
+      setup();
+    }
+    if (boardScreen == true) {
+      menuScreen = true;
+      boardScreen = false;
+      helpScreen = false;
+      setup();
+    }
+  }
+}
+     
+      
+
+
+
 void Rules() {
   fill(0);
-  textSize(12);
   
   //Used y to enable me to shift all text down/up at once instead of readjusting invidually
   int y = 70;
   
+  textSize(30);
+  text("RULES", 350, 20);
+  
+  textSize(12);
   //Rule 1
   text("1. Checkers is played by two players. Each player begins the game with 12 colored discs. (Typically, one set of)", 80, y);
   text("pieces is black and the other red.", 80, y+15);
@@ -180,6 +234,8 @@ void Rules() {
  //Rule 13
  text("13. A player wins the game when the opponent cannot make a move. In most cases, this is because all of the", 80, y+450);
  text("opponent's pieces have been captured, but it could also be because all of his pieces are blocked in.", 80, y+465);
+ 
+ text("All rules were taken from http://boardgames.about.com/cs/checkersdraughts/ht/play_checkers.htm", 80, 650);
 }
 
 
